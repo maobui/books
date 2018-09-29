@@ -19,4 +19,6 @@ open class Book : RealmObject() {
     open var author: String? = null
 
     open var imageUrl: String? = null
+
+    open var testAdd: String? = null
 }

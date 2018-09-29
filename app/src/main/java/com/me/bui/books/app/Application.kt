@@ -8,14 +8,16 @@ import io.realm.RealmConfiguration
  */
 
 class Application : android.app.Application() {
+    val DATABASE_VERSION = 1
     override fun onCreate() {
         super.onCreate()
 
         Realm.init(this.applicationContext)
         val realmConfiguration = RealmConfiguration.Builder()
                 .name(Realm.DEFAULT_REALM_NAME)
-//                .schemaVersion(0)
+                .schemaVersion(DATABASE_VERSION.toLong())
 //                .deleteRealmIfMigrationNeeded()
+                .migration(AppMigration())
                 .build()
         Realm.setDefaultConfiguration(realmConfiguration)
 
